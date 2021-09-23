@@ -7,6 +7,9 @@ class BookmarksView extends View {
 
   // not showing, need to render on init to get errorMessage
   _errorMessage = 'No bookmarks yet. Find a nice recipe and bookmark it :)';
+  addHandlerRender(handler) {
+    window.addEventListener('load', handler);
+  }
 
   _generateMarkup() {
     console.log(this._data);

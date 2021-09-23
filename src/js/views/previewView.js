@@ -15,7 +15,7 @@ class PreviewView extends View {
                 <figure class="preview__fig">
                     <img src="${this._data.image}" alt="${
       this._data.title
-    }" crossorigin/>
+    }" crossorigin />
                 </figure>
                 <div class="preview__data">
                     <h4 class="preview__title">${this._data.title}</h4>
