@@ -1,6 +1,7 @@
 import View from './View';
 import icons from 'url:../../img/icons.svg';
-import { Fraction } from 'fractional';
+// import { Fraction } from 'fractional';
+const Fraction = require('fraction.js');
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -76,16 +77,19 @@ class RecipeView extends View {
         </div>
       </div>
 
-      <div class="recipe__user-generated">
-        
-      </div>
-      <button class="btn--round btn--bookmark">
-        <svg class="">
-          <use href="${icons}#icon-bookmark${
+      
+        <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
+          <svg>
+            <use href="${icons}#icon-user"></use>
+          </svg>
+        </div>        
+        <button class="btn--round btn--bookmark">
+          <svg class="">
+            <use href="${icons}#icon-bookmark${
       this._data.bookmarked ? '-fill' : ''
     }"></use>
-        </svg>
-      </button>
+          </svg>
+        </button>
       </div>
 
     <div class="recipe__ingredients">
@@ -124,7 +128,7 @@ class RecipeView extends View {
         <use href="${icons}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        ing.quantity ? new Fraction(ing.quantity).toString() : ''
+        ing.quantity ? new Fraction(ing.quantity).toFraction(true) : ''
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
@@ -134,5 +138,7 @@ class RecipeView extends View {
     `;
   }
 }
+
+// ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}
 
 export default new RecipeView();
